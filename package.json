@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "A reasonably good collection of utility types.",
   "author": "Rafael Willians <me@rwillians.com>",
+  "license": "MIT",
   "keywords": ["maybe", "result"],
   "publishConfig": {
     "access": "public"
