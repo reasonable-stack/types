@@ -31,31 +31,6 @@ describe('Maybe.none()', () => {
   });
 });
 
-describe('Maybe.from(value)', () => {
-  it('returns None for null and undefined', () => {
-    expect(Maybe.isNone(Maybe.from(null))).toBe(true);
-    expect(Maybe.isNone(Maybe.from(undefined))).toBe(true);
-    expect(Maybe.isNone(Maybe.from(new Map<string, number>().get('missing')))).toBe(true);
-  });
-
-  it('returns Some for other falsy values', () => {
-    for (const value of [0, -0, '', false, Number.NaN, 0n]) {
-      const maybe = Maybe.from(value);
-
-      expect(Maybe.isSome(maybe)).toBe(true);
-      expect(maybe.unwrap()).toBe(value);
-    }
-  });
-
-  it('returns Some for any other value', () => {
-    const user = { name: 'Ada' };
-    const maybe = Maybe.from(user);
-
-    expect(Maybe.isSome(maybe)).toBe(true);
-    expect(maybe.unwrap()).toBe(user);
-  });
-});
-
 describe('Maybe.match(maybe, cases)', () => {
   it('calls `some` with the value of a Some', () => {
     const cases = { some: mock((n: number) => n * 2), none: mock(() => 'none') };

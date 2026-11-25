@@ -24,10 +24,4 @@ export namespace Maybe {
       isSome(m) ? cases.some(m.unwrap())
     : isNone(m) ? cases.none()
     : raise(new RuntimeError('Unreachable'));
-
-  export const from = <T>(value: T | null | undefined) => {
-    if (value === null) return none();
-    if (value === undefined) return none();
-    return some(value);
-  };
 }

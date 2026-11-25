@@ -84,30 +84,17 @@ if (Result.isOk(result)) {
 A value that may be absent: either `Some<T>`, holding a value, or `None`.
 
 ```ts
-Maybe.some(42);    // Some<number>
-Maybe.none();      // None
-Maybe.from(value); // None if value is null or undefined, Some otherwise
+Maybe.some(42); // Some<number>
+Maybe.none();   // None
 ```
 
-| function                       | returns           | description                                                |
-| :----------------------------- | :---------------- | :--------------------------------------------------------- |
-| `some(value)`                  | `Some<T>`         | wraps a value                                              |
-| `none()`                       | `None`            | the absence of a value                                     |
-| `from(value)`                  | `Some<T> \| None` | `None` for `null` or `undefined`, `Some` for anything else |
-| `isSome(maybe)`                | `boolean`         | narrows to `Some<T>`                                       |
-| `isNone(maybe)`                | `boolean`         | narrows to `None`                                          |
-| `match(maybe, { some, none })` | `S \| U`          | `some(value)` for `Some`, `none()` for `None`              |
-
-`from` only treats `null` and `undefined` as absent. Other falsy values, such
-as `0`, `''` and `false`, are wrapped in `Some`:
-
-```ts
-const ages = new Map([['ada', 36]]);
-
-Maybe.isNone(Maybe.from(ages.get('bob'))); // => true
-Maybe.isSome(Maybe.from(0));               // => true
-Maybe.none().unwrap();                     // => null
-```
+| function                       | returns   | description                                   |
+| :----------------------------- | :-------- | :-------------------------------------------- |
+| `some(value)`                  | `Some<T>` | wraps a value                                 |
+| `none()`                       | `None`    | the absence of a value                        |
+| `isSome(maybe)`                | `boolean` | narrows to `Some<T>`                          |
+| `isNone(maybe)`                | `boolean` | narrows to `None`                             |
+| `match(maybe, { some, none })` | `S \| U`  | `some(value)` for `Some`, `none()` for `None` |
 
 ## `Result`
 
