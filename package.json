@@ -1,6 +1,6 @@
 {
   "name": "@reasonable-stack/types",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A reasonably good collection of utility types.",
   "author": "Rafael Willians <me@rwillians.com>",
   "keywords": ["maybe", "result"],
