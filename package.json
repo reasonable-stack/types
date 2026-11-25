@@ -1,0 +1,48 @@
+{
+  "name": "@reasonable-stack/types",
+  "version": "0.1.0",
+  "description": "A reasonably good collection of utility types.",
+  "author": "Rafael Willians <me@rwillians.com>",
+  "keywords": ["maybe", "result"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": ["LICENSE", "dist/*"],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/reasonable-stack/types.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reasonable-stack/types/issues"
+  },
+  "type": "module",
+  "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "bun run build:cjs && bun run build:esm",
+    "build:cjs": "bun run --bun tsc --project tsconfig-cjs.json && echo '{\"type\":\"commonjs\"}' > dist/cjs/package.json",
+    "build:esm": "bun run --bun tsc --project tsconfig-esm.json",
+    "prepublishOnly": "bun run build",
+    "test": "bun test",
+    "typecheck": "bun check"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": ">=6.0.0"
+  }
+}

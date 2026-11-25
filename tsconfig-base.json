@@ -1,0 +1,12 @@
+{
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.spec.ts"],
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "rootDir": "src",
+    "declaration": true,
+    "strict": true,
+    "noImplicitAny": true,
+  },
+}
