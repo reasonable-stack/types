@@ -104,14 +104,17 @@ of the native `Error`.
 
 ```ts
 Result.ok(42);                   // Ok<number>
-Result.error('not found');       // Error<string>
+Result.ok('done');               // Ok<'done'>
+Result.error('not found');       // Error<'not found'>
 Result.error(new Error('boom')); // Error<Error>
+Result.ok();                     // Ok<void>
+Result.error();                  // Error<void>
 ```
 
 | function                       | returns    | description                                      |
 | :----------------------------- | :--------- | :----------------------------------------------- |
-| `ok(value)`                    | `Ok<T>`    | a successful outcome                             |
-| `error(value)`                 | `Error<E>` | a failed outcome                                 |
+| `ok(value?)`                   | `Ok<T>`    | a successful outcome                             |
+| `error(value?)`                | `Error<E>` | a failed outcome                                 |
 | `isOk(result)`                 | `boolean`  | narrows to `Ok<T>`                               |
 | `isError(result)`              | `boolean`  | narrows to `Error<E>`                            |
 | `match(result, { ok, error })` | `S \| U`   | `ok(value)` for `Ok`, `error(value)` for `Error` |
