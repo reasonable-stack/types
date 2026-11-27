@@ -1,15 +1,15 @@
 import { RuntimeError } from './errors';
 import { raise } from './utils';
 
-export type Result<T = unknown, E = unknown> = Result.Ok<T> | Result.Error<E>;
+export type Result<T = void, E = void> = Result.Ok<T> | Result.Error<E>;
 
 export namespace Result {
   const KIND = Symbol.for('kind');
   const OK = Symbol.for('result:ok');
   const ERROR = Symbol.for('result:error');
 
-  export type Ok<T = unknown> = { [KIND]: typeof OK, unwrap: () => T };
-  export type Error<T = unknown> = { [KIND]: typeof ERROR, unwrap: () => T };
+  export type Ok<T = void> = { [KIND]: typeof OK, unwrap: () => T };
+  export type Error<T = void> = { [KIND]: typeof ERROR, unwrap: () => T };
 
   export const ok = <T>(value: T): Ok<T> => ({ [KIND]: OK, unwrap: () => value });
   export const error = <E>(value: E): Error<E> => ({ [KIND]: ERROR, unwrap: () => value });
